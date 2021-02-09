@@ -1,0 +1,10 @@
+TEMPLATE     = vcapp
+TARGET       = TestCarte
+CONFIG      += warn_on qt debug_and_release windows console c++17
+HEADERS     += ./vector.h ./vector.inl ./Interface.h
+HEADERS     += ./CommunicationFPGA/CommunicationFPGA.h
+HEADERS     += ./VisiTest/centralwidget.h ./VisiTest/leds.h ./VisiTest/switches.h ./VisiTest/VisiTest.h
+SOURCES     += testcarte.cpp Interface.cpp
+INCLUDEPATH += ./ ./VisiTest ./CommunicationFPGA
+LIBS        += ./VisiTest/VisiTest.lib ./CommunicationFPGA/CommunicationFPGA.lib
+QT          += widgets
