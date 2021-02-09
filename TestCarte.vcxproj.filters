@@ -27,24 +27,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="testcarte.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CommunicationFPGA.h">
+    <ClInclude Include="CommunicationFPGA\CommunicationFPGA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VisiTest.h">
+    <ClInclude Include="Interface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="centralwidget.h">
+    <CustomBuild Include="VisiTest\VisiTest.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="VisiTest\centralwidget.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <ClInclude Include="VisiTest\leds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="leds.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="switches.h">
+    <ClInclude Include="VisiTest\switches.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vector.h">
@@ -55,6 +61,18 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="debug\moc_VisiTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_VisiTest.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\moc_centralwidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="release\moc_centralwidget.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>

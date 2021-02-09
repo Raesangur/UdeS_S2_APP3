@@ -14,6 +14,8 @@
     <ProjectGuid>{5F943719-86FA-3DD9-ABFE-4A273D7806F2}</ProjectGuid>
     <RootNamespace>TestCarte</RootNamespace>
     <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.18362.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;" Label="Configuration">
@@ -137,18 +139,50 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="testcarte.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CommunicationFPGA.h" />
-    <ClInclude Include="VisiTest.h" />
-    <ClInclude Include="centralwidget.h" />
-    <ClInclude Include="leds.h" />
-    <ClInclude Include="switches.h" />
+    <ClInclude Include="CommunicationFPGA\CommunicationFPGA.h" />
+    <ClInclude Include="Interface.h" />
+    <CustomBuild Include="VisiTest\VisiTest.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">VisiTest\VisiTest.h;release\moc_predefs.h;E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DNDEBUG -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include E:/GitHub/UdeS_S2_APP3/release/moc_predefs.h -IE:/Programmes/Qt/6.0.1/msvc2019_64/mkspecs/win32-msvc -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3/VisiTest -IE:/GitHub/UdeS_S2_APP3/CommunicationFPGA -IE:/Programmes/Qt/6.0.1/msvc2019_64/include -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtWidgets -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtGui -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtCore -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\ATLMFC\include&quot; -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\include&quot; -I&quot;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt&quot; VisiTest\VisiTest.h -o release\moc_VisiTest.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC VisiTest/VisiTest.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_VisiTest.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">VisiTest\VisiTest.h;debug\moc_predefs.h;E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include E:/GitHub/UdeS_S2_APP3/debug/moc_predefs.h -IE:/Programmes/Qt/6.0.1/msvc2019_64/mkspecs/win32-msvc -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3/VisiTest -IE:/GitHub/UdeS_S2_APP3/CommunicationFPGA -IE:/Programmes/Qt/6.0.1/msvc2019_64/include -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtWidgets -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtGui -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtCore -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\ATLMFC\include&quot; -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\include&quot; -I&quot;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt&quot; VisiTest\VisiTest.h -o debug\moc_VisiTest.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC VisiTest/VisiTest.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_VisiTest.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="VisiTest\centralwidget.h">
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">VisiTest\centralwidget.h;release\moc_predefs.h;E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DNDEBUG -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include E:/GitHub/UdeS_S2_APP3/release/moc_predefs.h -IE:/Programmes/Qt/6.0.1/msvc2019_64/mkspecs/win32-msvc -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3/VisiTest -IE:/GitHub/UdeS_S2_APP3/CommunicationFPGA -IE:/Programmes/Qt/6.0.1/msvc2019_64/include -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtWidgets -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtGui -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtCore -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\ATLMFC\include&quot; -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\include&quot; -I&quot;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt&quot; VisiTest\centralwidget.h -o release\moc_centralwidget.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">MOC VisiTest/centralwidget.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_centralwidget.cpp;%(Outputs)</Outputs>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">VisiTest\centralwidget.h;debug\moc_predefs.h;E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">E:\Programmes\Qt\6.0.1\msvc2019_64\bin\moc.exe  -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB --compiler-flavor=msvc --include E:/GitHub/UdeS_S2_APP3/debug/moc_predefs.h -IE:/Programmes/Qt/6.0.1/msvc2019_64/mkspecs/win32-msvc -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3 -IE:/GitHub/UdeS_S2_APP3/VisiTest -IE:/GitHub/UdeS_S2_APP3/CommunicationFPGA -IE:/Programmes/Qt/6.0.1/msvc2019_64/include -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtWidgets -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtGui -IE:/Programmes/Qt/6.0.1/msvc2019_64/include/QtCore -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\ATLMFC\include&quot; -I&quot;M:\VisualStudio 2019\VC\Tools\MSVC\14.25.28610\include&quot; -I&quot;C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt&quot; -I&quot;C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt&quot; VisiTest\centralwidget.h -o debug\moc_centralwidget.cpp</Command>
+      <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">MOC VisiTest/centralwidget.h</Message>
+      <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_centralwidget.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="VisiTest\leds.h" />
+    <ClInclude Include="VisiTest\switches.h" />
     <ClInclude Include="vector.h" />
     <ClInclude Include="vector.inl" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="debug\moc_VisiTest.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_VisiTest.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="debug\moc_centralwidget.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="release\moc_centralwidget.cpp">
+      <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
+    </ClCompile>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
