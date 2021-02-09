@@ -1,2 +1,16 @@
 ﻿  testcarte.cpp
-  TestCarte.vcxproj -> E:\GitHub\UdeS_S2_APP3\debug\TestCarte.exe
+E:\GitHub\UdeS_S2_APP3\Pascal\vector.inl(224,37): warning C4101: 'ex': unreferenced local variable
+E:\GitHub\UdeS_S2_APP3\Pascal\vector.inl(215): message : while compiling class template member function 'bool vector<std::string>::push_back(const ItemType &)'
+          with
+          [
+              ItemType=std::string
+          ]
+E:\GitHub\UdeS_S2_APP3\Pascal\vector.inl(139): message : see reference to function template instantiation 'bool vector<std::string>::push_back(const ItemType &)' being compiled
+          with
+          [
+              ItemType=std::string
+          ]
+E:\GitHub\UdeS_S2_APP3\Pascal\vector.inl(91): message : while compiling class template member function 'vector<std::string>::~vector(void)'
+E:\GitHub\UdeS_S2_APP3\Pascal\testcarte.cpp(10): message : see reference to function template instantiation 'vector<std::string>::~vector(void)' being compiled
+E:\GitHub\UdeS_S2_APP3\Pascal\testcarte.cpp(10): message : see reference to class template instantiation 'vector<std::string>' being compiled
+  TestCarte.vcxproj -> E:\GitHub\UdeS_S2_APP3\Pascal\debug\TestCarte.exe

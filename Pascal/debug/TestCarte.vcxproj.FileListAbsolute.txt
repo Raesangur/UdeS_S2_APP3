@@ -1,2 +1,4 @@
 E:\GitHub\UdeS_S2_APP3\debug\TestCarte.exe
 E:\GitHub\UdeS_S2_APP3\debug\TestCarte.pdb
+E:\GitHub\UdeS_S2_APP3\Pascal\debug\TestCarte.exe
+E:\GitHub\UdeS_S2_APP3\Pascal\debug\TestCarte.pdb

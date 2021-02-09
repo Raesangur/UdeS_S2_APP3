@@ -15,6 +15,17 @@
 #ifndef COMMUNICATIONFPGA_H
 #define COMMUNICATIONFPGA_H
 
+enum registre : int
+{
+    Interrupteurs = 8,
+    Boutons = 9,
+    LED = 10,
+    Afficheur0 = 11,
+    Afficheur1 = 12,
+    Afficheur2 = 13,
+    Afficheur3 = 14
+};
+
 class CommunicationFPGA
 {
 public:

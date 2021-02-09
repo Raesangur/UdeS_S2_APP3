@@ -10,9 +10,10 @@
  *                  Université de Sherbrooke
  */
 #include "Interface.h"
+#include "CommunicationFPGA.h"
 #include <QStyleFactory>
 
-Interface::Interface(const char* theName) : VisiTest(theName)
+Interface::Interface(const char* theName, CommunicationFPGA& FPGA) : VisiTest(theName), fpga(FPGA)
 {
     donnee.typeTest   = 1;
     donnee.registreSW = 1;
@@ -28,8 +29,7 @@ Interface::Interface(const char* theName) : VisiTest(theName)
     resetArchive();
 }
 
-void
-Interface::testSuivant()
+void Interface::testSuivant()
 {
     setTest(donnee);
     setArchive(donnee);
@@ -61,4 +61,29 @@ Interface::testSuivant()
         donnee.etatLD <<= 1;
         donnee.etatSW <<= 1;
     }
+}
+
+void Interface::demarrer()
+{
+    if(!fpga.estOk())
+    {
+        m_messageErreur = fpga.messageErreur();
+    }
+
+    if(!fpga.lireRegistre(registre::Interrupteurs, donnee.retourSW))
+    {
+        m_messageErreur = fpga.messageErreur();
+    }
+
+    if(!fpga.ecrireRegistre(registre::LED, donnee.retourSW))
+    {
+        m_messageErreur = fpga.messageErreur();
+    }
+    donnee.registreLD = registre::LED;
+    donnee.valeurLD   = donnee.retourSW;
+    donnee.etatLD     = donnee.valeurLD;
+    donnee.registreSW = registre::Interrupteurs;
+    donnee.etatSW     = donnee.retourSW;
+
+    setTest(donnee);
 }

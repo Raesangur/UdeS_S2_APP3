@@ -3,7 +3,8 @@
 
 #include <algorithm>
 #include <cstddef>
-#include <iostream>
+#include <ostream>
+#include <utility>
 
 
 template<typename ItemType>
@@ -17,10 +18,13 @@ private:
     Iterator m_begin    = nullptr;
     Iterator m_end      = nullptr;
     size_t   m_capacity = 0;
+    size_t   m_current  = 0;
+
 
     /*********************************************************************************************/
     /* Méthodes privées ------------------------------------------------------------------------ */
-    void m_reallocate(size_t newCapacity = m_capacity * 2);
+    void m_reallocate(size_t newCapacity);
+    void m_reallocate();
     void m_removeElements(Iterator itBegin, Iterator itEnd);
 
 public:
@@ -49,25 +53,29 @@ public:
     // Opérateur d'indexation pour accès
     const ItemType& operator[](size_t index) const;
     ItemType&       operator[](size_t index);
+    vector&         operator++();
+    vector&         operator--();
+    vector&         operator+=(ItemType value);
 
 
     /*********************************************************************************************/
     /* Accesseurs ------------------------------------------------------------------------------ */
-    Iterator begin() const;
-    Iterator end() const;
-    size_t   size() const;
-    size_t   capacity() const;
-    bool     empty() const;
+    Iterator  begin() const;
+    Iterator  end() const;
+    size_t    size() const;
+    size_t    capacity() const;
+    bool      empty() const;
+    ItemType& current();
 
     /*********************************************************************************************/
     /* Modificateurs --------------------------------------------------------------------------- */
-    void     resize(size_t newSize);
-    void     reserve(size_t capacity);
-    void     shrink_to_fit();
-    void     clear();
-    bool     push_back(const ItemType& value);
-    void     pop_back();
-    ItemType remove(size_t index);
+    void resize(size_t newSize);
+    void reserve(size_t capacity);
+    void shrink_to_fit();
+    void clear();
+    bool push_back(const ItemType& value);
+    void pop_back();
+    void remove(size_t index);
 };
 
 
