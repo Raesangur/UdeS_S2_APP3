@@ -1,2 +1,4 @@
 *.o
 *.vs
+./debug/*
+./reelease/*
