@@ -1,4 +1,5 @@
 #include <iostream>
+#include <QApplication>
 #include "CommunicationFPGA.h"
 #include "vector.h"
 #include "centralwidget.h"
@@ -7,10 +8,19 @@
 #include "VisiTest.h"
 #include "MonInterface.h"
 
-using namespace std;
 
-int main()
+
+int main(int argc, char** argv)
 {
+    
+    QApplication app(argc, argv);
+    CommunicationFPGA fpga;
+    if(!fpga.estOk())
+    {
+        std::cout << fpga.messageErreur() << std::endl;
+    }
+    MonInterface gui("CarteTest", fpga);
 
-	return 0;
+    return app.exec();
+    
 }

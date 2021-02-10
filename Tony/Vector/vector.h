@@ -20,7 +20,8 @@ private:
 
     /*********************************************************************************************/
     /* Méthodes privées ------------------------------------------------------------------------ */
-    void m_reallocate(size_t newCapacity = m_capacity * 2);
+    void m_reallocate(size_t newCapacity);
+    void m_reallocate();
     void m_removeElements(Iterator itBegin, Iterator itEnd);
 
 public:
@@ -67,10 +68,10 @@ public:
     void     clear();
     bool     push_back(const ItemType& value);
     void     pop_back();
-    ItemType remove(size_t index);
+    void     remove(size_t index);
 };
 
-
+//Définitions des méthodes après leurs déclarations
 #include "vector.inl"
 
 #endif

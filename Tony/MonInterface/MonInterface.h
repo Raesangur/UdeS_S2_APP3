@@ -12,16 +12,45 @@
 #ifndef MONINTERFACE_H
 #define MONINTERFACE_H
 
+#include <iostream>
 #include "VisiTest.h"
+#include "vector.h"
+#include "CommunicationFPGA.h"
+
+enum Registre
+{
+    SW  = 8,
+    BTN = 9,
+    LD  = 10,
+    AN0 = 11,
+    AN1 = 12,
+    AN2 = 13,
+    AN3 = 14
+};
 
 class MonInterface : public VisiTest
 {
 public:
-	MonInterface(const char *theName);
+    MonInterface(const char* theName, CommunicationFPGA &FPGA);
 public slots:
 	virtual	void testSuivant();
+    virtual void demarrer();
+    virtual void arreter();
+    virtual void vider();
+    virtual void modeFile();
+    virtual void modePile();
+    // Page Archive
+    virtual void premier();
+    virtual void dernier();
+    virtual void precedent();
+    virtual void suivant();
+
 private:
+    vector<DonneesTest> databaseTests;
 	DonneesTest donnee;
+    int readValue;
+    bool rememberData = false;
+    CommunicationFPGA&  fpga;
 };
 
 #endif // MONINTERFACE_H

@@ -53,7 +53,7 @@ public slots:
 	virtual void vider();
 	virtual void modeFile();
 	virtual void modePile();
-
+	//Page Archive
 	virtual void premier();
 	virtual void dernier();
 	virtual void precedent();
