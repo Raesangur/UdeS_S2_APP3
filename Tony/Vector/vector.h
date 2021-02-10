@@ -20,7 +20,8 @@ private:
 
     /*********************************************************************************************/
     /* Méthodes privées ------------------------------------------------------------------------ */
-    void m_reallocate(size_t newCapacity = m_capacity * 2);
+    void m_reallocate(size_t newCapacity);
+    void m_reallocate();
     void m_removeElements(Iterator itBegin, Iterator itEnd);
 
 public:

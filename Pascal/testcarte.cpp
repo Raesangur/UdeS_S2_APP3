@@ -10,7 +10,7 @@ int main(int argc, char** argv)
     vector<std::string> a;
     a += "Bon matin";
 
-    QApplication      app(argc, argv);
+    QApplication app(argc, argv);
     CommunicationFPGA fpga;
 
     if(!fpga.estOk())

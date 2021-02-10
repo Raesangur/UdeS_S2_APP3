@@ -12,8 +12,14 @@
 
 int main(int argc, char** argv)
 {
+    
     QApplication app(argc, argv);
-    MonInterface gui("CarteTest");
+    CommunicationFPGA fpga;
+    if(!fpga.estOk())
+    {
+        std::cout << fpga.messageErreur() << std::endl;
+    }
+    MonInterface gui("CarteTest", fpga);
 
     return app.exec();
     

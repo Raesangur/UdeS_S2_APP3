@@ -10,9 +10,11 @@
 *                  Université de Sherbrooke  
 */
 #include <QStyleFactory>
+#include <iostream>
+#include "CommunicationFPGA.h"
 #include "MonInterface.h"
 
-MonInterface::MonInterface(const char * theName) : VisiTest(theName)
+MonInterface::MonInterface(const char* theName, CommunicationFPGA& FPGA) : VisiTest(theName), fpga(FPGA)
 {
     
 	//placeholders
@@ -38,6 +40,19 @@ void MonInterface::testSuivant()
     {
         donnee.typeTest = 1;
     }
+    if(fpga.lireRegistre(SW, readValue))
+    {
+        donnee.registreSW = readValue;
+        donnee.retourSW = donnee.registreSW;
+        fpga.ecrireRegistre(LD, donnee.registreSW);
+        donnee.valeurLD = donnee.etatSW = donnee.registreLD = donnee.etatLD = donnee.registreSW;
+    };
+    //Sauvegarde Temporaire des données
+    if(rememberData != false)
+    {
+        databaseTests.push_back(donnee);
+    };
+
 	setTest(donnee);
 	setArchive(donnee);
 	setArchive(donnee.typeTest, donnee.registreSW);
@@ -74,22 +89,22 @@ void MonInterface::testSuivant()
 
 void MonInterface::demarrer()
 {
-
+    rememberData = true;
 }
 
 void MonInterface::arreter()
 {
-
+    rememberData = false;
 }
 
 void MonInterface::vider()
 {
-
+    databaseTests.empty();
 }
 
 void MonInterface::modeFile()
 {
-
+    
 } 
 
 void MonInterface::modePile()
