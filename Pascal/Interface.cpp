@@ -13,77 +13,65 @@
 #include "CommunicationFPGA.h"
 #include <QStyleFactory>
 
-Interface::Interface(const char* theName, CommunicationFPGA& FPGA) : VisiTest(theName), fpga(FPGA)
+Interface::Interface(const char* theName, CommunicationFPGA& FPGA) : VisiTest(theName), m_fpga(FPGA)
 {
-    donnee.typeTest   = 1;
-    donnee.registreSW = 1;
-    donnee.retourSW   = 1;
-
-    donnee.registreLD = 1;
-    donnee.valeurLD   = 1;
-
-    donnee.etatLD = 1;
-    donnee.etatSW = 1;
-
     resetTest();
     resetArchive();
 }
 
 void Interface::testSuivant()
 {
-    setTest(donnee);
-    setArchive(donnee);
-    setArchive(donnee.typeTest, donnee.registreSW);
+    setTest(m_donnee);
+    setArchive(m_donnee);
+    setArchive(m_donnee.typeTest, m_donnee.registreSW);
 
-    if(donnee.etatLD > 0x80)
+    if(m_donnee.etatLD > 0x80)
     {
-        donnee.typeTest = 1;
-
-        donnee.registreSW = 1;
-        donnee.retourSW   = 1;
-
-        donnee.registreLD = 1;
-        donnee.valeurLD   = 1;
-
-        donnee.etatLD = 1;
-        donnee.etatSW = 1;
+        m_donnee = DonneesTest{};
     }
     else
     {
-        donnee.typeTest++;
+        m_donnee.typeTest++;
 
-        donnee.registreSW++;
-        donnee.retourSW <<= 1;
+        m_donnee.registreSW++;
+        m_donnee.retourSW <<= 1;
 
-        donnee.registreLD++;
-        donnee.valeurLD <<= 1;
+        m_donnee.registreLD++;
+        m_donnee.valeurLD <<= 1;
 
-        donnee.etatLD <<= 1;
-        donnee.etatSW <<= 1;
+        m_donnee.etatLD <<= 1;
+        m_donnee.etatSW <<= 1;
     }
 }
 
 void Interface::demarrer()
 {
-    if(!fpga.estOk())
-    {
-        m_messageErreur = fpga.messageErreur();
-    }
+    m_saveArchive = true;
+}
 
-    if(!fpga.lireRegistre(registre::Interrupteurs, donnee.retourSW))
-    {
-        m_messageErreur = fpga.messageErreur();
-    }
+void Interface::arreter()
+{
+    m_saveArchive = false;
+}
 
-    if(!fpga.ecrireRegistre(registre::LED, donnee.retourSW))
-    {
-        m_messageErreur = fpga.messageErreur();
-    }
-    donnee.registreLD = registre::LED;
-    donnee.valeurLD   = donnee.retourSW;
-    donnee.etatLD     = donnee.valeurLD;
-    donnee.registreSW = registre::Interrupteurs;
-    donnee.etatSW     = donnee.retourSW;
+void Interface::vider()
+{
+    m_archive.clear();
+}
 
-    setTest(donnee);
+void Interface::premier()
+{
+    m_archive << 0; 
+}
+void Interface::dernier()
+{
+    m_archive >> 0;
+}
+void Interface::precedent()
+{
+    --m_archive;
+}
+void Interface::suivant()
+{
+    ++m_archive;
 }

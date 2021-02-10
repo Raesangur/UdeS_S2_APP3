@@ -55,6 +55,8 @@ public:
     ItemType&       operator[](size_t index);
     vector&         operator++();
     vector&         operator--();
+    void            operator<<(int shift_from_left = 0);
+    void            operator>>(int shift_from_right = 0);
     vector&         operator+=(ItemType value);
 
 
@@ -66,6 +68,7 @@ public:
     size_t    capacity() const;
     bool      empty() const;
     ItemType& current();
+    void      current(size_t newIndex);
 
     /*********************************************************************************************/
     /* Modificateurs --------------------------------------------------------------------------- */

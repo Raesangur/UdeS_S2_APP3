@@ -24,17 +24,25 @@ public:
 public slots:
     void testSuivant() override;
     void demarrer() override;
+    void arreter() override;
+    void vider() override;
+
+    void premier() override;
+    void dernier() override;
+    void precedent() override;
+    void suivant() override;
 
 private:
-    DonneesTest donnee;
-    vector<DonneesTest> archive;
-    CommunicationFPGA& fpga;
+    DonneesTest m_donnee;
+    vector<DonneesTest> m_archive;
+    CommunicationFPGA& m_fpga;
+    bool m_saveArchive = false;
+    const char* m_messageErreur = nullptr;
 
 public:
-    const char* m_messageErreur = nullptr;
     bool estOk()
     {
-        return m_messageErreur == nullptr;
+        return m_messageErreur == nullptr ? true : static_cast<bool>(m_messageErreur = nullptr);
     }
 };
 

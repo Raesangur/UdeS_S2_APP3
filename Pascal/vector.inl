@@ -134,6 +134,18 @@ vector<ItemType>& vector<ItemType>::operator--()
 }
 
 template<typename ItemType>
+void vector<ItemType>::operator<<(int shift_from_left)
+{
+    m_current = 0 + shift_from_left;
+}
+
+template<typename ItemType>
+void vector<ItemType>::operator>>(int shift_from_right)
+{
+    m_current = size() - (1 + shift_from_right);
+}
+
+template<typename ItemType>
 vector<ItemType>& vector<ItemType>::operator+=(ItemType value)
 {
     push_back(value);
@@ -174,7 +186,13 @@ bool vector<ItemType>::empty() const
 template<typename ItemType>
 ItemType& vector<ItemType>::current()
 {
-    return *m_current;
+    return operator[](m_current);
+}
+
+template<typename ItemType>
+void vector<ItemType>::current(size_t newIndex)
+{
+    m_current = newIndex;
 }
 
 template<typename ItemType>

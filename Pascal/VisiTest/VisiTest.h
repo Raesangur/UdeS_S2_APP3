@@ -17,15 +17,15 @@
 
 struct DonneesTest
 {
-    int typeTest;
+    int typeTest = 1;
 
-    int registreSW;
-    int retourSW;
-    int etatSW;
+    int registreSW = 0;
+    int retourSW = 0;
+    int etatSW = 0;
 
-    int registreLD;
-    int valeurLD;
-    int etatLD;
+    int registreLD = 0;
+    int valeurLD = 0;
+    int etatLD = 0;
 };
 
 class VisiTest : public QMainWindow
@@ -66,4 +66,4 @@ private:
     QWidget* widget;
 };
 
-#endif        // VISITEST_H
+#endif        
