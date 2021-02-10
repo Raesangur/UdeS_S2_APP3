@@ -17,6 +17,7 @@ private:
     Iterator m_begin    = nullptr;
     Iterator m_end      = nullptr;
     size_t   m_capacity = 0;
+    size_t   m_cursor   = 0;
 
     /*********************************************************************************************/
     /* Méthodes privées ------------------------------------------------------------------------ */
@@ -48,17 +49,24 @@ public:
     /*********************************************************************************************/
     /* Opérateurs ------------------------------------------------------------------------------ */
     // Opérateur d'indexation pour accès
-    const ItemType& operator[](size_t index) const;
-    ItemType&       operator[](size_t index);
+    [[nodiscard]]  const ItemType& operator[](size_t index) const;
+    [[nodiscard]]  ItemType&       operator[](size_t index);
+    // Opérateur d'ajout d'une donnée au vecteur
+    ItemType&       operator+=(ItemType& item);
+    // Opérateur ++
+    size_t operator++();
+    // Opérateur --
+    size_t operator--();
 
 
     /*********************************************************************************************/
     /* Accesseurs ------------------------------------------------------------------------------ */
-    Iterator begin() const;
-    Iterator end() const;
-    size_t   size() const;
-    size_t   capacity() const;
-    bool     empty() const;
+    [[nodiscard]]Iterator begin() const;
+    [[nodiscard]]Iterator end() const;
+    [[nodiscard]]size_t   size() const;
+    [[nodiscard]]size_t   capacity() const;
+    [[nodiscard]]bool     isempty() const;
+    [[nodiscard]]size_t   get_cursor() const;
 
     /*********************************************************************************************/
     /* Modificateurs --------------------------------------------------------------------------- */
@@ -69,6 +77,7 @@ public:
     bool     push_back(const ItemType& value);
     void     pop_back();
     void     remove(size_t index);
+    size_t   set_cursor(size_t newPos);
 };
 
 //Définitions des méthodes après leurs déclarations

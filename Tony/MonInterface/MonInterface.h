@@ -44,6 +44,9 @@ public slots:
     virtual void dernier();
     virtual void precedent();
     virtual void suivant();
+    virtual void sauvegarder(char* nomFichier);
+
+    void         showArchive(DonneesTest displayedData);
 
 private:
     vector<DonneesTest> databaseTests;
@@ -51,6 +54,7 @@ private:
     int readValue;
     bool rememberData = false;
     CommunicationFPGA&  fpga;
+    bool displayWAy = false;
 };
 
 #endif // MONINTERFACE_H

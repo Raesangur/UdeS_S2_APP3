@@ -40,51 +40,23 @@ void MonInterface::testSuivant()
     {
         donnee.typeTest = 1;
     }
-    if(fpga.lireRegistre(SW, readValue))
+    if(fpga.lireRegistre(SW, donnee.retourSW))
     {
-        donnee.registreSW = readValue;
-        donnee.retourSW = donnee.registreSW;
-        fpga.ecrireRegistre(LD, donnee.registreSW);
-        donnee.valeurLD = donnee.etatSW = donnee.registreLD = donnee.etatLD = donnee.registreSW;
-    };
+        fpga.ecrireRegistre(LD, donnee.retourSW);
+        donnee.valeurLD = donnee.etatSW = donnee.etatLD = donnee.etatSW = donnee.retourSW;
+        donnee.registreLD = LD;
+        donnee.registreSW = SW;
+
+    }
     //Sauvegarde Temporaire des données
     if(rememberData != false)
     {
-        databaseTests.push_back(donnee);
-    };
-
-	setTest(donnee);
-	setArchive(donnee);
-	setArchive(donnee.typeTest, donnee.registreSW);
-   
-   /*if(donnee.etatLD > 0x80)
-	{
-		donnee.typeTest = 1;
-
-		donnee.registreSW = 1;
-		donnee.retourSW = 1;
-
-		donnee.registreLD = 1;
-		donnee.valeurLD = 1;
-
-		donnee.etatLD = 1;
-		donnee.etatSW = 1;
-	}
-	else
-	{
-		donnee.typeTest++;
-		
-		donnee.registreSW++;
-		donnee.retourSW <<= 1;
-
-		donnee.registreLD++;
-		donnee.valeurLD <<= 1;
-
-		donnee.etatLD <<= 1;
-		donnee.etatSW <<= 1;
-	}
-	*/
-   message("bye");
+		databaseTests.push_back(donnee);
+        message("bye bye bye");
+    }
+    setTest(donnee);
+    showArchive(donnee);
+    //message("bye");
 }
 
 void MonInterface::demarrer()
@@ -99,35 +71,86 @@ void MonInterface::arreter()
 
 void MonInterface::vider()
 {
-    databaseTests.empty();
+    databaseTests.clear();
+    message("You can't just shoot a hole into the surface of Mars.");
 }
 
 void MonInterface::modeFile()
 {
-    
+    displayWAy = false;
 } 
 
 void MonInterface::modePile()
 {
-
+    displayWAy = true;
 }
 
 void MonInterface::premier()
 {
     message("premier");
+    DonneesTest donneeTemp;
+    if(displayWAy != true)
+    {
+        donneeTemp = databaseTests[databaseTests.set_cursor(0)];
+    }
+    else
+    {
+        donneeTemp = databaseTests[databaseTests.set_cursor(databaseTests.size() - 1)];
+    }
+    showArchive(donneeTemp);
 }
 
 void MonInterface::dernier()
 {
-    message("dernier");
+    DonneesTest donneeTemp;
+    if(displayWAy != true)
+    {
+        donneeTemp = databaseTests[databaseTests.set_cursor(databaseTests.size() - 1)];
+    }
+    else
+    {
+        donneeTemp = databaseTests[databaseTests.set_cursor(0)];
+    }
+    showArchive(donneeTemp);
 }
 
 void MonInterface::precedent()
 {
     message("precedent");
+    DonneesTest donneeTemp;
+    if(displayWAy != true)
+    {
+        donneeTemp = databaseTests[--databaseTests];
+    }
+    else
+    {
+        donneeTemp = databaseTests[++databaseTests];
+    }
+    showArchive(donneeTemp);
 }
 
 void MonInterface::suivant()
 {
     message("Suivant");
+    DonneesTest donneeTemp;
+    if(displayWAy != true)
+    {
+        donneeTemp = databaseTests[++databaseTests];
+    }
+    else
+    {
+        donneeTemp = databaseTests[--databaseTests];
+    }
+    showArchive(donneeTemp);
+}
+
+void MonInterface::sauvegarder(char* nomFichier)
+{
+
+}
+
+void MonInterface::showArchive(DonneesTest displayedData)
+{
+    setArchive(displayedData);
+    setArchive(databaseTests.get_cursor() + 1, databaseTests.size());
 }

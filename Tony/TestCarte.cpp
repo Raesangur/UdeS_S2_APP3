@@ -8,11 +8,8 @@
 #include "VisiTest.h"
 #include "MonInterface.h"
 
-
-
 int main(int argc, char** argv)
 {
-    
     QApplication app(argc, argv);
     CommunicationFPGA fpga;
     if(!fpga.estOk())
@@ -20,7 +17,5 @@ int main(int argc, char** argv)
         std::cout << fpga.messageErreur() << std::endl;
     }
     MonInterface gui("CarteTest", fpga);
-
     return app.exec();
-    
 }
