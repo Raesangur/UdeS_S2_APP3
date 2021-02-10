@@ -1,15 +1,13 @@
 #include "CommunicationFPGA.h"
 #include "Interface.h"
-#include <QApplication>
-#include <iostream>
 #include "vector.h"
+#include <iostream>
 #include <string>
+
+#include <QApplication>
 
 int main(int argc, char** argv)
 {
-    vector<std::string> a;
-    a += "Bon matin";
-
     QApplication      app(argc, argv);
     CommunicationFPGA fpga;
 

@@ -221,7 +221,7 @@ bool vector<ItemType>::push_back(const ItemType& value)
         }
         // new ne peut pas retourner null, il faut donc vérifier s'il lance une exception (du type
         // std::bad_alloc)
-        catch(const std::bad_alloc& ex)
+        catch(const std::bad_alloc&)
         {
             return false;
         }

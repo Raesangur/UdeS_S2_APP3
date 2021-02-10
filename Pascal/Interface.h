@@ -14,27 +14,28 @@
 
 #include "VisiTest.h"
 #include "CommunicationFPGA.h"
+#include "vector.h"
 
 class Interface : public VisiTest
 {
 public:
     Interface(const char* theName, CommunicationFPGA& FPGA);
 
-    bool estOk()
-    {
-        return m_messageErreur == nullptr;
-    }
-
 public slots:
-    virtual void testSuivant() override;
-    virtual void demarrer() override;
+    void testSuivant() override;
+    void demarrer() override;
 
 private:
     DonneesTest donnee;
+    vector<DonneesTest> archive;
     CommunicationFPGA& fpga;
 
 public:
     const char* m_messageErreur = nullptr;
+    bool estOk()
+    {
+        return m_messageErreur == nullptr;
+    }
 };
 
 #endif        // MONINTERFACE_H

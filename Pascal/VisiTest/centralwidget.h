@@ -21,7 +21,7 @@
 #include<QTabWidget>
 #include<QTextEdit>
 
-#include "visitest.h"
+#include "VisiTest.h"
 #include "leds.h"
 #include "switches.h"
 
