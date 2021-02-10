@@ -13,14 +13,27 @@
 #define MONINTERFACE_H
 
 #include "VisiTest.h"
+#include "vector.h"
 
 class MonInterface : public VisiTest
 {
 public:
-	MonInterface(const char *theName);
+    MonInterface(const char* theName);
 public slots:
 	virtual	void testSuivant();
+    virtual void demarrer();
+    virtual void arreter();
+    virtual void vider();
+    virtual void modeFile();
+    virtual void modePile();
+    // Page Archive
+    virtual void premier();
+    virtual void dernier();
+    virtual void precedent();
+    virtual void suivant();
+
 private:
+    vector<DonneesTest> databaseTests;
 	DonneesTest donnee;
 };
 

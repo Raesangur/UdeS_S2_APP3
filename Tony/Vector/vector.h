@@ -67,10 +67,10 @@ public:
     void     clear();
     bool     push_back(const ItemType& value);
     void     pop_back();
-    ItemType remove(size_t index);
+    void     remove(size_t index);
 };
 
-
+//Définitions des méthodes après leurs déclarations
 #include "vector.inl"
 
 #endif

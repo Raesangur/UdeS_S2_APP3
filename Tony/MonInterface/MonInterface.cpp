@@ -14,13 +14,15 @@
 
 MonInterface::MonInterface(const char * theName) : VisiTest(theName)
 {
-	donnee.typeTest = 1;
+    
+	//placeholders
+	donnee.typeTest = 0;
 	donnee.registreSW = 1;
 	donnee.retourSW = 1;
-
+    //placeholders
 	donnee.registreLD = 1;
 	donnee.valeurLD = 1;
-
+    //placeholders
 	donnee.etatLD = 1;
 	donnee.etatSW = 1;
 
@@ -30,11 +32,17 @@ MonInterface::MonInterface(const char * theName) : VisiTest(theName)
 
 void MonInterface::testSuivant()
 {
+	//Gestion numero de test
+    donnee.typeTest++;
+    if(donnee.typeTest > 0x3)
+    {
+        donnee.typeTest = 1;
+    }
 	setTest(donnee);
 	setArchive(donnee);
 	setArchive(donnee.typeTest, donnee.registreSW);
    
-   if(donnee.etatLD > 0x80)
+   /*if(donnee.etatLD > 0x80)
 	{
 		donnee.typeTest = 1;
 
@@ -60,6 +68,51 @@ void MonInterface::testSuivant()
 		donnee.etatLD <<= 1;
 		donnee.etatSW <<= 1;
 	}
-
+	*/
    message("bye");
+}
+
+void MonInterface::demarrer()
+{
+
+}
+
+void MonInterface::arreter()
+{
+
+}
+
+void MonInterface::vider()
+{
+
+}
+
+void MonInterface::modeFile()
+{
+
+} 
+
+void MonInterface::modePile()
+{
+
+}
+
+void MonInterface::premier()
+{
+    message("premier");
+}
+
+void MonInterface::dernier()
+{
+    message("dernier");
+}
+
+void MonInterface::precedent()
+{
+    message("precedent");
+}
+
+void MonInterface::suivant()
+{
+    message("Suivant");
 }
