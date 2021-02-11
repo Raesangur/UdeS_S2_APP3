@@ -12,7 +12,6 @@ But:		Déclaration des méthodes et classes de Vector
 #include <cstddef>
 #include <iostream>
 #include <ostream>
-#include <string>
 #include <fstream>
 #include "VisiTest.h"
 #include <ios>
@@ -49,10 +48,6 @@ public:
     // Copy constructor
     vector(const vector& other);
     vector& operator=(const vector& other);
-
-    // Move constructors
-    vector(const vector&& other) = delete;
-    vector& operator=(const vector&& other) = delete;
 
     // Destructeur
     ~vector();
