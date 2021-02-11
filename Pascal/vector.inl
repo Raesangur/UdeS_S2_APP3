@@ -114,23 +114,23 @@ ItemType& vector<ItemType>::operator[](size_t index)
 }
 
 template<typename ItemType>
-vector<ItemType>& vector<ItemType>::operator++()
+size_t vector<ItemType>::operator++()
 {
     if(m_current + 1 != size())
     {
         m_current++;
     }
-    return *this;
+    return m_current;
 }
 
 template<typename ItemType>
-vector<ItemType>& vector<ItemType>::operator--()
+size_t vector<ItemType>::operator--()
 {
     if(m_current != 0)
     {
         m_current--;
     }
-    return *this;
+    return m_current;
 }
 
 template<typename ItemType>
@@ -184,15 +184,18 @@ bool vector<ItemType>::empty() const
 }
 
 template<typename ItemType>
-ItemType& vector<ItemType>::current()
+size_t vector<ItemType>::current() const
 {
-    return operator[](m_current);
+    return m_current;
 }
 
 template<typename ItemType>
 void vector<ItemType>::current(size_t newIndex)
 {
-    m_current = newIndex;
+    if(newIndex < size())
+    {
+        m_current = newIndex;
+    }
 }
 
 template<typename ItemType>
@@ -226,6 +229,7 @@ void vector<ItemType>::clear()
 {
     m_removeElements(begin(), end());
     m_end = begin();
+    m_current = 0;
 }
 
 template<typename ItemType>

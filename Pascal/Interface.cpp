@@ -12,6 +12,7 @@
 #include "Interface.h"
 #include "CommunicationFPGA.h"
 #include <QStyleFactory>
+#include <iostream>
 
 Interface::Interface(const char* theName, CommunicationFPGA& FPGA) : VisiTest(theName), m_fpga(FPGA)
 {
@@ -42,6 +43,11 @@ void Interface::testSuivant()
         m_donnee.etatLD <<= 1;
         m_donnee.etatSW <<= 1;
     }
+
+    if (m_saveArchive)
+    {
+        m_archive += m_donnee;
+    }
 }
 
 void Interface::demarrer()
@@ -57,21 +63,35 @@ void Interface::arreter()
 void Interface::vider()
 {
     m_archive.clear();
+    resetArchive();
+    resetTest();
 }
 
 void Interface::premier()
 {
-    m_archive << 0; 
+    m_archive << 0;
+    DonneesTest data = m_archive[m_archive.current()];
+    setArchive(data);
+    setArchive(1, m_archive.size());
 }
 void Interface::dernier()
 {
     m_archive >> 0;
+    DonneesTest data = m_archive[m_archive.current()];
+    setArchive(data);
+    setArchive(m_archive.size(), m_archive.size());
 }
 void Interface::precedent()
 {
     --m_archive;
+    DonneesTest data = m_archive[m_archive.current()];
+    setArchive(data);
+    setArchive(m_archive.current() + 1, m_archive.size());
 }
 void Interface::suivant()
 {
     ++m_archive;
+    DonneesTest data = m_archive[m_archive.current()];
+    setArchive(data);
+    setArchive(m_archive.current() + 1, m_archive.size());
 }

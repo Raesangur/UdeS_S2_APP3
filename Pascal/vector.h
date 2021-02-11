@@ -51,24 +51,24 @@ public:
     /*********************************************************************************************/
     /* Opérateurs ------------------------------------------------------------------------------ */
     // Opérateur d'indexation pour accès
-    const ItemType& operator[](size_t index) const;
-    ItemType&       operator[](size_t index);
-    vector&         operator++();
-    vector&         operator--();
-    void            operator<<(int shift_from_left = 0);
-    void            operator>>(int shift_from_right = 0);
-    vector&         operator+=(ItemType value);
+    [[nodiscard]] const ItemType& operator[](size_t index) const;
+    [[nodiscard]] ItemType&       operator[](size_t index);
+    size_t                        operator++();
+    size_t                        operator--();
+    void                          operator<<(int shift_from_left);
+    void                          operator>>(int shift_from_right);
+    vector&                       operator+=(ItemType value);
 
 
     /*********************************************************************************************/
     /* Accesseurs ------------------------------------------------------------------------------ */
-    Iterator  begin() const;
-    Iterator  end() const;
-    size_t    size() const;
-    size_t    capacity() const;
-    bool      empty() const;
-    ItemType& current();
-    void      current(size_t newIndex);
+    [[nodiscard]] Iterator begin() const;
+    [[nodiscard]] Iterator end() const;
+    [[nodiscard]] size_t   size() const;
+    [[nodiscard]] size_t   capacity() const;
+    [[nodiscard]] bool     empty() const;
+    [[nodiscard]] size_t   current() const;
+    void                   current(size_t newIndex);
 
     /*********************************************************************************************/
     /* Modificateurs --------------------------------------------------------------------------- */
