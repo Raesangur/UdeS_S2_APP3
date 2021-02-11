@@ -1,0 +1,144 @@
+Type test: 1
+Adresse switches: 8
+Retour switches: ff (255)
+Etat switches: ff (255)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: ff (255)
+Etat switches: ff (255)
+Adresse leds: 10
+Valeurs leds: 0 (0)
+Etat leds: 0 (0)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: ff (255)
+Etat switches: ff (255)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: fe (254)
+Etat switches: fe (254)
+Adresse leds: 10
+Valeurs leds: fe (254)
+Etat leds: fe (254)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: fe (254)
+Etat switches: fe (254)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: fe (254)
+Etat switches: fe (254)
+Adresse leds: 10
+Valeurs leds: 7f (127)
+Etat leds: 7f (127)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: 1 (1)
+Etat switches: 1 (1)
+Adresse leds: 10
+Valeurs leds: 1 (1)
+Etat leds: 1 (1)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: 1 (1)
+Etat switches: 1 (1)
+Adresse leds: 10
+Valeurs leds: 0 (0)
+Etat leds: 0 (0)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: 1 (1)
+Etat switches: 1 (1)
+Adresse leds: 10
+Valeurs leds: 1 (1)
+Etat leds: 1 (1)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: 0 (0)
+Etat switches: 0 (0)
+Adresse leds: 10
+Valeurs leds: 0 (0)
+Etat leds: 0 (0)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: 0 (0)
+Etat switches: 0 (0)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: 0 (0)
+Etat switches: 0 (0)
+Adresse leds: 10
+Valeurs leds: 0 (0)
+Etat leds: 0 (0)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: 4 (4)
+Etat switches: 4 (4)
+Adresse leds: 10
+Valeurs leds: 4 (4)
+Etat leds: 4 (4)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: 4 (4)
+Etat switches: 4 (4)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: 4 (4)
+Etat switches: 4 (4)
+Adresse leds: 10
+Valeurs leds: 3 (3)
+Etat leds: 3 (3)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: 8 (8)
+Etat switches: 8 (8)
+Adresse leds: 10
+Valeurs leds: 8 (8)
+Etat leds: 8 (8)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: 8 (8)
+Etat switches: 8 (8)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: 8 (8)
+Etat switches: 8 (8)
+Adresse leds: 10
+Valeurs leds: 7 (7)
+Etat leds: 7 (7)
+

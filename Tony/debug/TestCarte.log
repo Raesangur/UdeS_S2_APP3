@@ -1,16 +1,17 @@
 ﻿  MonInterface.cpp
-D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.inl(199,1): error C2660: 'vector<DonneesTest>::m_reallocate' : la fonction ne prend pas 0 arguments
-D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.h(23,10): message : voir la déclaration de 'vector<DonneesTest>::m_reallocate'
-D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.inl(194): message : pendant la compilation de la fonction membre classe modèle 'bool vector<DonneesTest>::push_back(const ItemType &)'
+D:\Documents\Programmation\UdeS_S2_APP3\Tony\MonInterface\MonInterface.cpp(158,68): warning C4267: 'argument' : conversion de 'size_t' en 'const int', perte possible de données
+D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.inl(250,37): warning C4101: 'ex' : variable locale non référencée
+D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.inl(241): message : pendant la compilation de la fonction membre classe modèle 'bool vector<DonneesTest>::push_back(const ItemType &)'
           with
           [
               ItemType=DonneesTest
           ]
-D:\Documents\Programmation\UdeS_S2_APP3\Tony\MonInterface\MonInterface.cpp(53): message : voir la référence à l'instanciation de la fonction modèle 'bool vector<DonneesTest>::push_back(const ItemType &)' en cours de compilation
+D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.inl(136): message : voir la référence à l'instanciation de la fonction modèle 'bool vector<DonneesTest>::push_back(const ItemType &)' en cours de compilation
           with
           [
               ItemType=DonneesTest
           ]
-D:\Documents\Programmation\UdeS_S2_APP3\Tony\MonInterface\MonInterface.h(49): message : voir la référence à l'instanciation classe modèle 'vector<DonneesTest>' en cours de compilation
-  TestCarte.cpp
-  Génération de code en cours...
+D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.inl(73): message : pendant la compilation de la fonction membre classe modèle 'vector<DonneesTest>::vector(const vector<DonneesTest> &)'
+D:\Documents\Programmation\UdeS_S2_APP3\Tony\MonInterface\MonInterface.cpp(151): message : voir la référence à l'instanciation de la fonction modèle 'vector<DonneesTest>::vector(const vector<DonneesTest> &)' en cours de compilation
+D:\Documents\Programmation\UdeS_S2_APP3\Tony\Vector\vector.h(89): message : voir la référence à l'instanciation classe modèle 'vector<DonneesTest>' en cours de compilation
+  TestCarte.vcxproj -> D:\Documents\Programmation\UdeS_S2_APP3\Tony\debug\TestCarte.exe

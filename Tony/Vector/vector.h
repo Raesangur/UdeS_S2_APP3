@@ -4,6 +4,11 @@
 #include <algorithm>
 #include <cstddef>
 #include <iostream>
+#include <ostream>
+#include <string>
+#include <fstream>
+#include "VisiTest.h"
+#include <ios>
 
 
 template<typename ItemType>
@@ -17,6 +22,7 @@ private:
     Iterator m_begin    = nullptr;
     Iterator m_end      = nullptr;
     size_t   m_capacity = 0;
+    size_t   m_cursor   = 0;
 
     /*********************************************************************************************/
     /* Méthodes privées ------------------------------------------------------------------------ */
@@ -48,17 +54,23 @@ public:
     /*********************************************************************************************/
     /* Opérateurs ------------------------------------------------------------------------------ */
     // Opérateur d'indexation pour accès
-    const ItemType& operator[](size_t index) const;
-    ItemType&       operator[](size_t index);
-
-
+    [[nodiscard]]  const ItemType& operator[](size_t index) const;
+    [[nodiscard]]  ItemType&       operator[](size_t index);
+    // Opérateur d'ajout d'une donnée au vecteur
+    ItemType&       operator+=(ItemType& item);
+    // Opérateur ++
+    size_t operator++();
+    // Opérateur --
+    size_t operator--();
+    
     /*********************************************************************************************/
     /* Accesseurs ------------------------------------------------------------------------------ */
-    Iterator begin() const;
-    Iterator end() const;
-    size_t   size() const;
-    size_t   capacity() const;
-    bool     empty() const;
+    [[nodiscard]]Iterator begin() const;
+    [[nodiscard]]Iterator end() const;
+    [[nodiscard]]size_t   size() const;
+    [[nodiscard]]size_t   capacity() const;
+    [[nodiscard]]bool     isempty() const;
+    [[nodiscard]]size_t   get_cursor() const;
 
     /*********************************************************************************************/
     /* Modificateurs --------------------------------------------------------------------------- */
@@ -69,7 +81,26 @@ public:
     bool     push_back(const ItemType& value);
     void     pop_back();
     void     remove(size_t index);
+    size_t   set_cursor(size_t newPos);
 };
+
+// Opérateur <<
+inline std::ostream& operator<<(std::ostream& output, vector<DonneesTest> myData)
+{
+    for(int x = 0; x < myData.size(); x++)
+    {
+        output << "Type test: " << myData[x].typeTest << "\n"
+               << "Adresse switches: " << myData[x].registreSW << "\n"
+               << "Retour switches: " << std::hex << myData[x].retourSW << std::dec << " ("<< myData[x].retourSW << ")" <<"\n"
+               << "Etat switches: " << std::hex << myData[x].etatSW << std::dec << " ("<< myData[x].etatSW << ")" << "\n"
+               << "Adresse leds: " << myData[x].registreLD << "\n"
+               << "Valeurs leds: " << std::hex << myData[x].valeurLD << std::dec << " (" << myData[x].valeurLD << ")" << "\n"
+               << "Etat leds: " << std::hex << myData[x].etatLD << std::dec << " (" << myData[x].etatLD << ")" << "\n\n";
+    }
+    return output;
+}
+
+
 
 //Définitions des méthodes après leurs déclarations
 #include "vector.inl"

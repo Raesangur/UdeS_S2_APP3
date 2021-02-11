@@ -1,4 +1,19 @@
 template<typename ItemType>
+void vector<ItemType>::m_reallocate()
+{
+    if(capacity() == 0)
+    {
+        m_reallocate(4);
+    }
+    else
+    {
+        m_reallocate(capacity() * 2);
+    }
+    
+}
+
+
+template<typename ItemType>
 void
 vector<ItemType>::m_reallocate(size_t newCapacity)
 {
@@ -19,8 +34,6 @@ vector<ItemType>::m_reallocate(size_t newCapacity)
     m_end      = m_begin + copiedSize;
     m_capacity = newCapacity;
 }
-
-
 
 
 template<typename ItemType>
@@ -92,7 +105,7 @@ vector<ItemType>::~vector()
     delete[] m_begin;
 }
 
-
+//Opérateur []
 template<typename ItemType>
 const ItemType&
 vector<ItemType>::operator[](size_t index) const
@@ -115,6 +128,30 @@ vector<ItemType>::operator[](size_t index)
     return m_begin[index];
 }
 
+//Opérateur +=
+template<typename ItemType>
+ItemType&
+vector<ItemType>::operator+=(ItemType &item)
+{
+    push_back(item);
+    return item;
+}
+
+// Opérateur ++
+template<typename ItemType>
+size_t 
+vector<ItemType>::operator++()
+{
+    return set_cursor(get_cursor()+1);
+}
+
+// Opérateur --
+template<typename ItemType>
+size_t 
+vector<ItemType>::operator--()
+{
+    return set_cursor(get_cursor()-1);
+}
 
 template<typename ItemType>
 typename vector<ItemType>::Iterator
@@ -146,11 +183,20 @@ vector<ItemType>::capacity() const
 
 template<typename ItemType>
 bool
-vector<ItemType>::empty() const
+vector<ItemType>::isempty() const
 {
     return size() == 0;
 }
 
+template<typename ItemType>
+size_t
+vector<ItemType>::get_cursor() const
+{
+    return m_cursor;
+}
+
+/*********************************************************************************************/
+/* Modificateurs --------------------------------------------------------------------------- */
 template<typename ItemType>
 void
 vector<ItemType>::resize(size_t newSize)
@@ -186,6 +232,7 @@ vector<ItemType>::clear()
 {
     m_removeElements(begin(), end());
     m_end = begin();
+    m_cursor = 0;
 }
 
 template<typename ItemType>
@@ -228,4 +275,15 @@ vector<ItemType>::remove(size_t index)
         *it = *(it + 1);
     }
     m_end--;
+}
+
+template<typename ItemType>
+size_t 
+vector<ItemType>::set_cursor(size_t newPos)
+{
+    if(newPos < size())
+    {
+        m_cursor = newPos;
+    }
+    return get_cursor();
 }
