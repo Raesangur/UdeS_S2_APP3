@@ -77,9 +77,4 @@
       <Filter>Generated Files</Filter>
     </CustomBuild>
   </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="vector.natvis">
-      <Filter>Source Files</Filter>
-    </Natvis>
-  </ItemGroup>
 </Project>

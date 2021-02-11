@@ -1,3 +1,10 @@
+/*
+Nom:		Vector
+Auteurs:	Pascal-Emmanuel Lachance et Anthony Royer
+Date:		2021-02-11
+Projet:		Vector
+But:		Déclaration des méthodes et classes de Vector
+*/
 #ifndef VECTOR_H_
 #define VECTOR_H_
 
@@ -99,8 +106,6 @@ inline std::ostream& operator<<(std::ostream& output, vector<DonneesTest> myData
     }
     return output;
 }
-
-
 
 //Définitions des méthodes après leurs déclarations
 #include "vector.inl"

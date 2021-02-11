@@ -1,21 +1,21 @@
 /*
-*   La classe MonInterface teste l'interface usager VisiTest (librairie).
-*   
-*   $Author: bruc2001 $
-*   $Date: 2018-02-13 08:54:36 -0500 (mar., 13 févr. 2018) $
-*   $Revision: 108 $
-*   $Id: MonInterface.h 108 2018-02-13 13:54:36Z bruc2001 $
-*
-*   Copyright 2016 Département de génie électrique et génie informatique
-*                  Université de Sherbrooke  
-*/
+ *   La classe MonInterface teste l'interface usager VisiTest (librairie).
+ *
+ *   $Author: lacp3102-roya2019 $
+ *   $Date: 2021-02-11 12:26:36 -0500 (jeudi., 11 févr. 2021) $
+ *   $Revision: 108 $
+ *   $Id: MonInterface.h 108 2021-02-11 12:27:36Z lacp3102-roya2019 $
+ *
+ *   Copyright 2021 Département de génie électrique et génie informatique
+ *                  Université de Sherbrooke
+ */
 #ifndef MONINTERFACE_H
 #define MONINTERFACE_H
 
-#include <iostream>
+#include "CommunicationFPGA.h"
 #include "VisiTest.h"
 #include "vector.h"
-#include "CommunicationFPGA.h"
+#include <iostream>
 
 enum Registre
 {
@@ -31,32 +31,34 @@ enum Registre
 class MonInterface : public VisiTest
 {
 public:
-    MonInterface(const char* theName, CommunicationFPGA &FPGA);
+    MonInterface(const char* theName, CommunicationFPGA& FPGA);
 public slots:
-	virtual	void testSuivant();
-    virtual void demarrer();
-    virtual void arreter();
-    virtual void vider();
-    virtual void modeFile();
-    virtual void modePile();
-    // Page Archive
-    virtual void premier();
-    virtual void dernier();
-    virtual void precedent();
-    virtual void suivant();
-    virtual void sauvegarder(char* nomFichier);
-    void         showArchive(DonneesTest displayedData);
-    bool         checkparity(int x);
-    
+    void testSuivant() override;
+    // Options d'archivage
+    void demarrer() override;
+    void arreter() override;
+    void vider() override;
+    void modeFile() override;
+    void modePile() override;
+    void sauvegarder(char* nomFichier) override;
+    // Navigation Archive
+    void premier() override;
+    void dernier() override;
+    void precedent() override;
+    void suivant() override;
+
 
 private:
+    // Attributs privés
     vector<DonneesTest> databaseTests;
-	DonneesTest donnee;
-    int readValue;
-    bool rememberData = false;
+    DonneesTest         donnee;
     CommunicationFPGA&  fpga;
-    bool displayWAy = false;
+    bool                rememberData = false;
+    bool                displayWAy   = false;
+    // Méthodes privées
     void managementLEDs();
+    void showArchive(DonneesTest displayedData);
+    bool checkparity(int x);
 };
 
-#endif // MONINTERFACE_H
+#endif        // MONINTERFACE_H

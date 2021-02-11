@@ -1,40 +1,42 @@
 /*
-*   Voir fichier d'entête pour informations.
-*   
-*   $Author: bruc2001 $
-*   $Date: 2018-02-13 08:54:36 -0500 (mar., 13 févr. 2018) $
-*   $Revision: 108 $
-*   $Id: MonInterface.cpp 108 2018-02-13 13:54:36Z bruc2001 $
-*
-*   Copyright 2013 Département de génie électrique et génie informatique
-*                  Université de Sherbrooke  
-*/
-#include <QStyleFactory>
-#include <iostream>
-#include "CommunicationFPGA.h"
+ *   Voir fichier d'entête pour informations.
+ *
+ *   $Author: lacp3102-roya2019 $
+ *   $Date: 2021-02-11 12:26:36 -0500 (jeudi., 11 févr. 2021) $
+ *   $Revision: 108 $
+ *   $Id: MonInterface.cpp 108 2021-02-11 12:27:36Z lacp3102-roya2019 $
+ *
+ *   Copyright 2021 Département de génie électrique et génie informatique
+ *                  Université de Sherbrooke
+ */
 #include "MonInterface.h"
+#include "CommunicationFPGA.h"
+#include <QStyleFactory>
+#include <bit>
+#include <iostream>
 
-MonInterface::MonInterface(const char* theName, CommunicationFPGA& FPGA) : VisiTest(theName), fpga(FPGA)
+MonInterface::MonInterface(const char* theName, CommunicationFPGA& FPGA)
+: VisiTest(theName), fpga(FPGA)
 {
-    
-	//placeholders
-	donnee.typeTest = 0;
-	donnee.registreSW = 1;
-	donnee.retourSW = 1;
-    //placeholders
-	donnee.registreLD = 1;
-	donnee.valeurLD = 1;
-    //placeholders
-	donnee.etatLD = 1;
-	donnee.etatSW = 1;
+    // placeholders
+    donnee.typeTest   = 0;
+    donnee.registreSW = SW;
+    donnee.retourSW   = 1;
+    // placeholders
+    donnee.registreLD = LD;
+    donnee.valeurLD   = 1;
+    // placeholders
+    donnee.etatLD = 1;
+    donnee.etatSW = 1;
 
-	resetTest();
-	resetArchive();
+    resetTest();
+    resetArchive();
 }
 
+#pragma region Options menu Archive
 void MonInterface::testSuivant()
 {
-	//Gestion numero de test
+    // Gestion numero de test
     donnee.typeTest++;
     if(donnee.typeTest > 0x3)
     {
@@ -42,22 +44,19 @@ void MonInterface::testSuivant()
     }
     if(fpga.lireRegistre(SW, donnee.retourSW))
     {
-        
         donnee.etatSW = donnee.etatSW = donnee.retourSW;
-        donnee.registreLD = LD;
-        donnee.registreSW = SW;
         managementLEDs();
         fpga.ecrireRegistre(LD, donnee.etatLD);
     }
-    //Sauvegarde Temporaire des données
+    // Sauvegarde Temporaire des données
     if(rememberData != false)
     {
-		databaseTests += donnee;
+        databaseTests += donnee;
         message("ba bye bye");
     }
     setTest(donnee);
     showArchive(donnee);
-    //message("bye");
+    // message("bye");
 }
 
 void MonInterface::demarrer()
@@ -76,16 +75,33 @@ void MonInterface::vider()
     message("You can't just shoot a hole into the surface of Mars.");
 }
 
+void MonInterface::sauvegarder(char* nomFichier)
+{
+    std::ofstream myFile{nomFichier};
+    myFile << databaseTests;
+    myFile.close();
+}
+#pragma endregion
+
+#pragma region Mode Affichage
 void MonInterface::modeFile()
 {
-    displayWAy = false;
-} 
+    if(databaseTests.isempty())
+    {
+        displayWAy = false;
+    }
+}
 
 void MonInterface::modePile()
 {
-    displayWAy = true;
+    if(databaseTests.isempty())
+    {
+        displayWAy = true;
+    }
 }
+#pragma endregion
 
+#pragma region Navigation archive
 void MonInterface::premier()
 {
     message("premier");
@@ -144,13 +160,7 @@ void MonInterface::suivant()
     }
     showArchive(donneeTemp);
 }
-
-void MonInterface::sauvegarder(char* nomFichier)
-{
-    std::ofstream myFile{nomFichier};
-    myFile << databaseTests;
-    myFile.close();
-}
+#pragma endregion
 
 void MonInterface::showArchive(DonneesTest displayedData)
 {
@@ -166,7 +176,7 @@ void MonInterface::managementLEDs()
             donnee.valeurLD = donnee.etatLD = donnee.retourSW;
             break;
         case 2:
-            if(checkparity(donnee.retourSW) != 1)
+            if(checkparity(std::popcount((uint)donnee.retourSW)) != 1)
             {
                 donnee.valeurLD = donnee.etatLD = 0b11111111;
             }
@@ -182,7 +192,6 @@ void MonInterface::managementLEDs()
             message("It's time to kick ass and chew bubble gum.");
             break;
     }
-      
 }
 
 bool MonInterface::checkparity(int x)
