@@ -1,0 +1,80 @@
+Type test: 1
+Adresse switches: 8
+Retour switches: cc (204)
+Etat switches: cc (204)
+Adresse leds: 10
+Valeurs leds: cc (204)
+Etat leds: cc (204)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: fc (252)
+Etat switches: fc (252)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: fc (252)
+Etat switches: fc (252)
+Adresse leds: 10
+Valeurs leds: 7 (7)
+Etat leds: 7 (7)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: fc (252)
+Etat switches: fc (252)
+Adresse leds: 10
+Valeurs leds: fc (252)
+Etat leds: fc (252)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: ff (255)
+Etat switches: ff (255)
+Adresse leds: 10
+Valeurs leds: 0 (0)
+Etat leds: 0 (0)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: ff (255)
+Etat switches: ff (255)
+Adresse leds: 10
+Valeurs leds: 8 (8)
+Etat leds: 8 (8)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: ff (255)
+Etat switches: ff (255)
+Adresse leds: 10
+Valeurs leds: ff (255)
+Etat leds: ff (255)
+
+Type test: 2
+Adresse switches: 8
+Retour switches: ef (239)
+Etat switches: ef (239)
+Adresse leds: 10
+Valeurs leds: 0 (0)
+Etat leds: 0 (0)
+
+Type test: 3
+Adresse switches: 8
+Retour switches: cf (207)
+Etat switches: cf (207)
+Adresse leds: 10
+Valeurs leds: 7 (7)
+Etat leds: 7 (7)
+
+Type test: 1
+Adresse switches: 8
+Retour switches: c7 (199)
+Etat switches: c7 (199)
+Adresse leds: 10
+Valeurs leds: c7 (199)
+Etat leds: c7 (199)
+

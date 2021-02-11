@@ -42,17 +42,18 @@ void MonInterface::testSuivant()
     }
     if(fpga.lireRegistre(SW, donnee.retourSW))
     {
-        fpga.ecrireRegistre(LD, donnee.retourSW);
-        donnee.valeurLD = donnee.etatSW = donnee.etatLD = donnee.etatSW = donnee.retourSW;
+        
+        donnee.etatSW = donnee.etatSW = donnee.retourSW;
         donnee.registreLD = LD;
         donnee.registreSW = SW;
-
+        managementLEDs();
+        fpga.ecrireRegistre(LD, donnee.etatLD);
     }
     //Sauvegarde Temporaire des données
     if(rememberData != false)
     {
-		databaseTests.push_back(donnee);
-        message("bye bye bye");
+		databaseTests += donnee;
+        message("ba bye bye");
     }
     setTest(donnee);
     showArchive(donnee);
@@ -146,11 +147,45 @@ void MonInterface::suivant()
 
 void MonInterface::sauvegarder(char* nomFichier)
 {
-
+    std::ofstream myFile{nomFichier};
+    myFile << databaseTests;
+    myFile.close();
 }
 
 void MonInterface::showArchive(DonneesTest displayedData)
 {
     setArchive(displayedData);
     setArchive(databaseTests.get_cursor() + 1, databaseTests.size());
+}
+
+void MonInterface::managementLEDs()
+{
+    switch(donnee.typeTest)
+    {
+        case 1:
+            donnee.valeurLD = donnee.etatLD = donnee.retourSW;
+            break;
+        case 2:
+            if(checkparity(donnee.retourSW) != 1)
+            {
+                donnee.valeurLD = donnee.etatLD = 0b11111111;
+            }
+            else
+            {
+                donnee.valeurLD = donnee.etatLD = 0x00;
+            }
+            break;
+        case 3:
+            donnee.valeurLD = donnee.etatLD = 0xff >> (8 - (int)log2(donnee.retourSW + 1));
+            break;
+        default:
+            message("It's time to kick ass and chew bubble gum.");
+            break;
+    }
+      
+}
+
+bool MonInterface::checkparity(int x)
+{
+    return x & 0b00000001;
 }

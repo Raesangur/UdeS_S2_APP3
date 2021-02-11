@@ -134,22 +134,24 @@ ItemType&
 vector<ItemType>::operator+=(ItemType &item)
 {
     push_back(item);
+    return item;
 }
 
 // Opérateur ++
 template<typename ItemType>
-size_t vector<ItemType>::operator++()
+size_t 
+vector<ItemType>::operator++()
 {
     return set_cursor(get_cursor()+1);
 }
 
 // Opérateur --
 template<typename ItemType>
-size_t vector<ItemType>::operator--()
+size_t 
+vector<ItemType>::operator--()
 {
     return set_cursor(get_cursor()-1);
 }
-
 
 template<typename ItemType>
 typename vector<ItemType>::Iterator

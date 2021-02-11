@@ -45,8 +45,9 @@ public slots:
     virtual void precedent();
     virtual void suivant();
     virtual void sauvegarder(char* nomFichier);
-
     void         showArchive(DonneesTest displayedData);
+    bool         checkparity(int x);
+    
 
 private:
     vector<DonneesTest> databaseTests;
@@ -55,6 +56,7 @@ private:
     bool rememberData = false;
     CommunicationFPGA&  fpga;
     bool displayWAy = false;
+    void managementLEDs();
 };
 
 #endif // MONINTERFACE_H

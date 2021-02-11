@@ -4,6 +4,11 @@
 #include <algorithm>
 #include <cstddef>
 #include <iostream>
+#include <ostream>
+#include <string>
+#include <fstream>
+#include "VisiTest.h"
+#include <ios>
 
 
 template<typename ItemType>
@@ -57,8 +62,7 @@ public:
     size_t operator++();
     // Opérateur --
     size_t operator--();
-
-
+    
     /*********************************************************************************************/
     /* Accesseurs ------------------------------------------------------------------------------ */
     [[nodiscard]]Iterator begin() const;
@@ -79,6 +83,24 @@ public:
     void     remove(size_t index);
     size_t   set_cursor(size_t newPos);
 };
+
+// Opérateur <<
+inline std::ostream& operator<<(std::ostream& output, vector<DonneesTest> myData)
+{
+    for(int x = 0; x < myData.size(); x++)
+    {
+        output << "Type test: " << myData[x].typeTest << "\n"
+               << "Adresse switches: " << myData[x].registreSW << "\n"
+               << "Retour switches: " << std::hex << myData[x].retourSW << std::dec << " ("<< myData[x].retourSW << ")" <<"\n"
+               << "Etat switches: " << std::hex << myData[x].etatSW << std::dec << " ("<< myData[x].etatSW << ")" << "\n"
+               << "Adresse leds: " << myData[x].registreLD << "\n"
+               << "Valeurs leds: " << std::hex << myData[x].valeurLD << std::dec << " (" << myData[x].valeurLD << ")" << "\n"
+               << "Etat leds: " << std::hex << myData[x].etatLD << std::dec << " (" << myData[x].etatLD << ")" << "\n\n";
+    }
+    return output;
+}
+
+
 
 //Définitions des méthodes après leurs déclarations
 #include "vector.inl"
