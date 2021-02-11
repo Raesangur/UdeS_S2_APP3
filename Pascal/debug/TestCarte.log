@@ -1,5 +1,13 @@
-﻿  MOC VisiTest/centralwidget.h
-  moc_centralwidget.cpp
+﻿  Generate moc_predefs.h
+  MOC VisiTest/VisiTest.h
+  MOC VisiTest/centralwidget.h
+  Interface.cpp
+E:\GitHub\UdeS_S2_APP3\Pascal\Interface.cpp(75,35): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+E:\GitHub\UdeS_S2_APP3\Pascal\Interface.cpp(82,50): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+E:\GitHub\UdeS_S2_APP3\Pascal\Interface.cpp(89,57): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+E:\GitHub\UdeS_S2_APP3\Pascal\Interface.cpp(96,57): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
   testcarte.cpp
+  moc_VisiTest.cpp
+  moc_centralwidget.cpp
   Generating Code...
   TestCarte.vcxproj -> E:\GitHub\UdeS_S2_APP3\Pascal\debug\TestCarte.exe
