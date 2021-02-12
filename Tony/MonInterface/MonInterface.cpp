@@ -52,7 +52,6 @@ void MonInterface::testSuivant()
     if(rememberData != false)
     {
         databaseTests += donnee;
-        message("ba bye bye");
     }
     setTest(donnee);
     showArchive(donnee);
@@ -72,6 +71,8 @@ void MonInterface::arreter()
 void MonInterface::vider()
 {
     databaseTests.clear();
+    resetArchive();
+    resetTest();
     message("You can't just shoot a hole into the surface of Mars.");
 }
 
