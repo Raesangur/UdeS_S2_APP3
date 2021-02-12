@@ -107,13 +107,20 @@ void MonInterface::premier()
 {
     message("premier");
     DonneesTest donneeTemp;
-    if(displayWAy != true)
+    try
     {
-        donneeTemp = databaseTests[databaseTests.set_cursor(0)];
+        if(displayWAy != true)
+        {
+            donneeTemp = databaseTests[databaseTests.set_cursor(0)];
+        }
+        else
+        {
+            donneeTemp = databaseTests[databaseTests.set_cursor(databaseTests.size() - 1)];
+        }
     }
-    else
+    catch(...)
     {
-        donneeTemp = databaseTests[databaseTests.set_cursor(databaseTests.size() - 1)];
+        return;
     }
     showArchive(donneeTemp);
 }
@@ -121,13 +128,20 @@ void MonInterface::premier()
 void MonInterface::dernier()
 {
     DonneesTest donneeTemp;
-    if(displayWAy != true)
+    try
     {
-        donneeTemp = databaseTests[databaseTests.set_cursor(databaseTests.size() - 1)];
+        if(displayWAy != true)
+        {
+            donneeTemp = databaseTests[databaseTests.set_cursor(databaseTests.size() - 1)];
+        }
+        else
+        {
+            donneeTemp = databaseTests[databaseTests.set_cursor(0)];
+        }
     }
-    else
+    catch(...)
     {
-        donneeTemp = databaseTests[databaseTests.set_cursor(0)];
+        return;
     }
     showArchive(donneeTemp);
 }
@@ -136,14 +150,24 @@ void MonInterface::precedent()
 {
     message("precedent");
     DonneesTest donneeTemp;
-    if(displayWAy != true)
+    try
     {
-        donneeTemp = databaseTests[--databaseTests];
+        if(displayWAy != true)
+        {
+            donneeTemp = databaseTests[--databaseTests];
+        }
+        else
+        {
+            donneeTemp = databaseTests[++databaseTests];
+        }
+
     }
-    else
+    catch(...)
     {
-        donneeTemp = databaseTests[++databaseTests];
+        return;
     }
+
+
     showArchive(donneeTemp);
 }
 
@@ -151,13 +175,20 @@ void MonInterface::suivant()
 {
     message("Suivant");
     DonneesTest donneeTemp;
-    if(displayWAy != true)
+    try
     {
-        donneeTemp = databaseTests[++databaseTests];
+        if(displayWAy != true)
+        {
+            donneeTemp = databaseTests[++databaseTests];
+        }
+        else
+        {
+            donneeTemp = databaseTests[--databaseTests];
+        }
     }
-    else
+    catch(...)
     {
-        donneeTemp = databaseTests[--databaseTests];
+        return;
     }
     showArchive(donneeTemp);
 }
@@ -165,8 +196,11 @@ void MonInterface::suivant()
 
 void MonInterface::showArchive(DonneesTest displayedData)
 {
-    setArchive(displayedData);
-    setArchive(databaseTests.get_cursor() + 1, databaseTests.size());
+    if(databaseTests.size() > 0)
+    {
+        setArchive(displayedData);
+        setArchive(databaseTests.get_cursor() + 1, databaseTests.size());
+    }
 }
 
 void MonInterface::managementLEDs()

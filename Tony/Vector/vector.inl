@@ -129,7 +129,8 @@ ItemType& vector<ItemType>::operator[](size_t index)
 {
     if(index >= size())
     {
-        throw nullptr;
+        throw std::out_of_range("Invalid access to vector");
+        
     }
     return m_begin[index];
 }

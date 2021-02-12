@@ -9,6 +9,7 @@ But:		Déclaration des méthodes et classes de Vector
 #define VECTOR_H_
 
 #include <algorithm>
+#include <stdexcept>
 #include <cstddef>
 #include <iostream>
 #include <ostream>
